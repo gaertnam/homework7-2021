@@ -45,9 +45,14 @@ document.querySelector("#faster").addEventListener("click", function(){
 
 document.querySelector("#skip").addEventListener("click", function(){
 	console.log("Current Video Time is " + video.currentTime);
-	video.currentTime+=15;
-	console.log("New Video Time is " +video.currentTime);
-	// video.loop = true
+	if(video.currentTime + 15 >= video.duration){
+		video.load();
+		// video.loop = true
+	}
+	else {
+		video.currentTime += 15;
+		console.log("New Video Time is " + video.currentTime);
+	}
 });
 
 document.querySelector("#mute").addEventListener("click", function(){
